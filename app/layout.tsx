@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://yomomma.io"),
   title: "yomomma.io",
-  description: "A fast yo momma joke generator with a REST API and frontend built for Vercel.",
+  description: "A fast yo momma joke generator with a REST API and frontend built for Render.",
   openGraph: {
     title: "yomomma.io",
     description: "Generate random yo momma jokes or browse them by category.",

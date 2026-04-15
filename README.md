@@ -1,6 +1,6 @@
 # yomomma
 
-`yomomma` is a Vercel-ready Next.js app for `yomomma.io`. It ships with:
+`yomomma` is a Render-ready Next.js app for `yomomma.io`. It ships with:
 
 - a frontend yo momma joke generator
 - a REST API
@@ -24,15 +24,17 @@ Open `http://localhost:3000`.
 - `GET /api/jokes/category/ugly`
 - `GET /api/health`
 
-## Deploy to Vercel
+## Deploy to Render
 
 ```bash
-vercel
+git push
 ```
 
-For production:
+Then create a new Render Web Service from the repo, or use the included `render.yaml`.
+
+Render settings:
 
 ```bash
-vercel --prod
+Build Command: npm install && npm run build
+Start Command: npm start
 ```
-# yomomma
