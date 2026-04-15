@@ -68,6 +68,11 @@ p {
   margin: 0;
 }
 
+.button-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
 .primary-button {
   border: 0;
   border-radius: 16px;
@@ -79,6 +84,7 @@ p {
     opacity 120ms ease;
   background: var(--primary);
   color: white;
+  flex: 1;
 }
 
 .primary-button:hover {
@@ -87,6 +93,24 @@ p {
 
 .primary-button:hover {
   background: var(--primary-strong);
+}
+
+.secondary-button {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    background 120ms ease,
+    opacity 120ms ease;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+}
+
+.secondary-button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .joke-card {
@@ -110,5 +134,9 @@ p {
 @media (max-width: 900px) {
   .simple-card {
     padding: 1rem;
+  }
+
+  .button-row {
+    flex-direction: column;
   }
 }

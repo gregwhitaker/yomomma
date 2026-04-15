@@ -17,6 +17,7 @@ export default function HomePage() {
   const [currentJoke, setCurrentJoke] = useState<Joke | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
 
   useEffect(() => {
     async function initialize() {
@@ -37,6 +38,7 @@ export default function HomePage() {
 
   async function loadRandomJoke() {
     setIsRefreshing(true);
+    setCopyState("idle");
 
     try {
       const response = await fetch("/api/jokes/random", { cache: "no-store" });
@@ -52,15 +54,33 @@ export default function HomePage() {
     }
   }
 
+  async function copyJoke() {
+    if (!currentJoke) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(currentJoke.text);
+      setCopyState("copied");
+    } catch {
+      setCopyState("error");
+    }
+  }
+
   return (
     <main className="page-shell">
       <section className="simple-card">
         <article className="joke-card" aria-live="polite">
           <p>{isLoading ? fallbackMessage : currentJoke?.text || "No joke available yet."}</p>
         </article>
-        <button className="primary-button" onClick={() => void loadRandomJoke()}>
-          {isRefreshing ? "loading..." : "Hit Me"}
-        </button>
+        <div className="button-row">
+          <button className="primary-button" onClick={() => void loadRandomJoke()}>
+            {isRefreshing ? "loading..." : "Hit Me"}
+          </button>
+          <button className="secondary-button" onClick={() => void copyJoke()}>
+            {copyState === "copied" ? "Copied" : copyState === "error" ? "Copy Failed" : "Copy"}
+          </button>
+        </div>
       </section>
     </main>
   );
