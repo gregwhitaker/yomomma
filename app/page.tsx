@@ -83,21 +83,22 @@ export default function HomePage() {
             }
           }}
         >
+          <button
+            className="copy-icon"
+            aria-label="Copy joke"
+            onClick={(event) => {
+              event.stopPropagation();
+              void copyJoke();
+            }}
+          >
+            <span className="copy-icon-back" aria-hidden="true" />
+            <span className="copy-icon-front" aria-hidden="true" />
+          </button>
           <p>{isLoading ? fallbackMessage : currentJoke?.text || "No joke available yet."}</p>
         </article>
         <button className="primary-button" onClick={() => void loadRandomJoke()}>
           {isRefreshing ? "loading..." : "Hit Me"}
         </button>
-        <button className="copy-link" onClick={() => void copyJoke()}>
-          Copy
-        </button>
-        <p className="copy-hint">
-          {copyState === "copied"
-            ? "Copied."
-            : copyState === "error"
-              ? "Copy failed."
-              : "Click the joke or Copy to grab it."}
-        </p>
       </section>
     </main>
   );

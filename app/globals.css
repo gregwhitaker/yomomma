@@ -100,6 +100,7 @@ p {
   display: grid;
   place-items: center;
   cursor: pointer;
+  position: relative;
   transition:
     transform 120ms ease,
     box-shadow 120ms ease,
@@ -122,20 +123,43 @@ p {
   line-height: 1.35;
 }
 
-.copy-link {
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: var(--primary);
+.copy-icon {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.84);
   cursor: pointer;
-  justify-self: center;
-  text-decoration: underline;
+  padding: 0;
 }
 
-.copy-hint {
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.95rem;
+.copy-icon:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.copy-icon-back,
+.copy-icon-front {
+  position: absolute;
+  width: 0.7rem;
+  height: 0.85rem;
+  border: 1.5px solid var(--primary);
+  border-radius: 0.15rem;
+  background: transparent;
+}
+
+.copy-icon-back {
+  top: 0.62rem;
+  left: 0.78rem;
+  opacity: 0.65;
+}
+
+.copy-icon-front {
+  top: 0.48rem;
+  left: 0.62rem;
+  background: rgba(255, 250, 242, 0.9);
 }
 
 @media (max-width: 900px) {
