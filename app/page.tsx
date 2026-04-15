@@ -70,17 +70,34 @@ export default function HomePage() {
   return (
     <main className="page-shell">
       <section className="simple-card">
-        <article className="joke-card" aria-live="polite">
+        <article
+          className="joke-card"
+          aria-live="polite"
+          onClick={() => void copyJoke()}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              void copyJoke();
+            }
+          }}
+        >
           <p>{isLoading ? fallbackMessage : currentJoke?.text || "No joke available yet."}</p>
         </article>
-        <div className="button-row">
-          <button className="primary-button" onClick={() => void loadRandomJoke()}>
-            {isRefreshing ? "loading..." : "Hit Me"}
-          </button>
-          <button className="secondary-button" onClick={() => void copyJoke()}>
-            {copyState === "copied" ? "Copied" : copyState === "error" ? "Copy Failed" : "Copy"}
-          </button>
-        </div>
+        <button className="primary-button" onClick={() => void loadRandomJoke()}>
+          {isRefreshing ? "loading..." : "Hit Me"}
+        </button>
+        <button className="copy-link" onClick={() => void copyJoke()}>
+          Copy
+        </button>
+        <p className="copy-hint">
+          {copyState === "copied"
+            ? "Copied."
+            : copyState === "error"
+              ? "Copy failed."
+              : "Click the joke or Copy to grab it."}
+        </p>
       </section>
     </main>
   );

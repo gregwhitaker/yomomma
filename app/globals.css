@@ -68,11 +68,6 @@ p {
   margin: 0;
 }
 
-.button-row {
-  display: flex;
-  gap: 0.75rem;
-}
-
 .primary-button {
   border: 0;
   border-radius: 16px;
@@ -84,7 +79,6 @@ p {
     opacity 120ms ease;
   background: var(--primary);
   color: white;
-  flex: 1;
 }
 
 .primary-button:hover {
@@ -93,24 +87,6 @@ p {
 
 .primary-button:hover {
   background: var(--primary-strong);
-}
-
-.secondary-button {
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 1rem 1.2rem;
-  cursor: pointer;
-  transition:
-    transform 120ms ease,
-    background 120ms ease,
-    opacity 120ms ease;
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--text);
-}
-
-.secondary-button:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.92);
 }
 
 .joke-card {
@@ -123,6 +99,21 @@ p {
   min-height: 240px;
   display: grid;
   place-items: center;
+  cursor: pointer;
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    border-color 120ms ease;
+}
+
+.joke-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(168, 63, 0, 0.25);
+}
+
+.joke-card:focus-visible {
+  outline: 2px solid rgba(168, 63, 0, 0.4);
+  outline-offset: 4px;
 }
 
 .joke-card p {
@@ -131,12 +122,24 @@ p {
   line-height: 1.35;
 }
 
+.copy-link {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--primary);
+  cursor: pointer;
+  justify-self: center;
+  text-decoration: underline;
+}
+
+.copy-hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 @media (max-width: 900px) {
   .simple-card {
     padding: 1rem;
-  }
-
-  .button-row {
-    flex-direction: column;
   }
 }
