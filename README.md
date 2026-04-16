@@ -17,6 +17,7 @@ Open `http://localhost:3000`.
 
 ## REST API
 
+- Browser docs: `GET /api`
 - `GET /api/jokes`
 - `GET /api/jokes?category=fat`
 - `GET /api/jokes/random`

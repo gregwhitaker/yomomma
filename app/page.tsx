@@ -100,6 +100,15 @@ export default function HomePage() {
           {isRefreshing ? "loading..." : "Hit Me"}
         </button>
       </section>
+      <footer className="footer">
+        <p className="copyright">yomomma.io © 2026</p>
+        <span className="footer-separator" aria-hidden="true">
+          •
+        </span>
+        <a className="api-link" href="/api">
+          API
+        </a>
+      </footer>
     </main>
   );
 }
