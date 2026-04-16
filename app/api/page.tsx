@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SiteFooter } from "@/app/components/site-footer";
 
 export const metadata: Metadata = {
   title: "API | yomomma.io",
@@ -48,45 +49,26 @@ export default function ApiDocsPage() {
   return (
     <main className="page-shell">
       <section className="simple-card">
-        <h1 style={{ margin: 0, fontSize: "clamp(2rem, 5vw, 3rem)" }}>API</h1>
-        <p style={{ margin: 0, color: "var(--muted)", lineHeight: 1.6 }}>
+        <h1 className="api-title">API</h1>
+        <p className="api-intro">
           Simple docs for the yomomma.io joke API with curl examples you can run as-is.
         </p>
 
-        <div style={{ display: "grid", gap: "1rem" }}>
+        <div className="api-endpoints">
           {endpoints.map((endpoint) => (
-            <section
-              key={endpoint.path}
-              style={{
-                border: "1px solid var(--line)",
-                borderRadius: "20px",
-                padding: "1rem",
-                background: "rgba(255, 255, 255, 0.66)",
-              }}
-            >
-              <p style={{ margin: 0, fontWeight: 700 }}>
-                <span style={{ color: "var(--primary)" }}>{endpoint.method}</span> {endpoint.path}
+            <section key={endpoint.path} className="api-endpoint-card">
+              <p className="api-endpoint-heading">
+                <span className="api-endpoint-method">{endpoint.method}</span> {endpoint.path}
               </p>
-              <p style={{ margin: "0.5rem 0 0", color: "var(--muted)", lineHeight: 1.5 }}>
-                {endpoint.description}
-              </p>
-              <pre
-                style={{
-                  margin: "0.9rem 0 0",
-                  padding: "0.85rem 1rem",
-                  borderRadius: "14px",
-                  background: "#24160a",
-                  color: "#fffaf2",
-                  overflowX: "auto",
-                  fontSize: "0.95rem",
-                }}
-              >
+              <p className="api-endpoint-description">{endpoint.description}</p>
+              <pre className="api-code-block">
                 <code>{endpoint.curl}</code>
               </pre>
             </section>
           ))}
         </div>
       </section>
+      <SiteFooter linkHref="/" linkLabel="Home" />
     </main>
   );
 }

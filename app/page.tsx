@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { SiteFooter } from "@/app/components/site-footer";
 
 type Joke = {
   id: number;
@@ -100,15 +101,7 @@ export default function HomePage() {
           {isRefreshing ? "loading..." : "Hit Me"}
         </button>
       </section>
-      <footer className="footer">
-        <p className="copyright">yomomma.io © 2026</p>
-        <span className="footer-separator" aria-hidden="true">
-          •
-        </span>
-        <a className="api-link" href="/api">
-          API
-        </a>
-      </footer>
+      <SiteFooter linkHref="/api" linkLabel="API" />
     </main>
   );
 }
